@@ -1,8 +1,10 @@
 #ifndef PARENTUTILS_H
 #define PARENTUTILS_H
 
+//Подключение POSIX-совместимых функций и расширения X/Open
 #define _XOPEN_SOURCE 700
 
+//Подключение библиотек
 #include <signal.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -12,11 +14,13 @@
 #include <stdbool.h>
 #include <time.h>
 
+//Структура для хранения информации о дочернем процессе
 typedef struct {
     pid_t pid;
-    int can_output;
+    sig_atomic_t can_output;
 } Process;
 
+//Объявление функций
 bool validate(char* str);
 
 int transform(char* str);
@@ -42,6 +46,8 @@ void interface();
 void handler_alarm(int signo);
 
 void handler_permission(int signo, siginfo_t* info, void* context);
+
+void handler_child_err(int signo);
 
 void init_handlers();
 

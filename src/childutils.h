@@ -1,8 +1,10 @@
 #ifndef CHILDTUTILS_H
 #define CHILDTUTILS_H
 
+//Подключение POSIX-совместимых функций и расширения X/Open
 #define _XOPEN_SOURCE 700
 
+//Подключение библиотек
 #include <signal.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -13,6 +15,7 @@ typedef struct {
     int second;
 } Words;
 
+//Объявление функций
 void handler_print(int signo);
 
 void handler_stat(int signo);
